@@ -242,7 +242,7 @@ describe('Phone Directory app \n', function() {
     );
   });
 
-  it('should have no Results found <div> row if no Mobile numbers gets filtered in search', async function() {
+  it('should show No Results found <div>, if no Mobile numbers gets filtered in search', async function() {
     name.sendKeys('John Doe');
     mobile.sendKeys('9876543210');
     email.sendKeys('admin3@xyzcompany.com');
@@ -250,7 +250,7 @@ describe('Phone Directory app \n', function() {
 
     const tbody = "document.querySelectorAll('#summaryTable tbody')[0]";
     search.sendKeys('0000000000');
-    let correctRows = await driver.executeScript(`return document.querySelectorAll('#summaryTable tbody')[0].childElementCount === 1`);
+    let correctRows = await driver.executeScript(`return document.querySelectorAll('#summaryTable tbody')[0].childElementCount === 1 && getComputedStyle(document.getElementById('noResult')).display !== 'none'`);
     expect(correctRows).to.be.true;
     driver.takeScreenshot().then(
       function(image, err) {
