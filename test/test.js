@@ -105,6 +105,15 @@ describe('Phone Directory app \n', function() {
     expect(displayError).to.be.true;
 
     name.sendKeys('John doe');
+    mobile.sendKeys('9898989898');
+    email.sendKeys('abc zyx@xyz.com');
+    await submit.click();
+    hasNoItemAdded = await driver.executeScript("return document.querySelectorAll('#summaryTable tbody').length === 1");
+    displayError = await driver.executeScript("return getComputedStyle(document.getElementsByClassName('error')[0]).display !== 'none'");
+    expect(hasNoItemAdded).to.be.true;
+    expect(displayError).to.be.true;
+
+    name.sendKeys('John doe');
     mobile.sendKeys('8989898989');
     email.sendKeys('adminadminadminadminadminadminadminadminadmin@xyzcompany.com');
     await submit.click();
