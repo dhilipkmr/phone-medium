@@ -110,6 +110,11 @@ input:focus {
   border-radius: 12px;
 }
 
+.noResult {
+  color: red;
+  padding-top: 10px;
+}
+
 .contactSummary {
   width: 40%;
   margin: auto;

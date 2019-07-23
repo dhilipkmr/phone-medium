@@ -13,7 +13,7 @@ options.addArguments(
     'headless'
 );
 
-describe('Flighter app \n', function() {
+describe('Phone Directory app \n', function() {
   this.timeout(100000);
 
   before(function(done) {
@@ -115,7 +115,7 @@ describe('Flighter app \n', function() {
 
   });
 
-  it('should add contact on clicking Add', async function() {
+  it('should add the contact on clicking Add', async function() {
     name.sendKeys('John Doe');
     mobile.sendKeys('9898989898');
     email.sendKeys('admin2@xyzcompany.com');
@@ -147,7 +147,7 @@ describe('Flighter app \n', function() {
     expect(messageDisplay).to.equal('');
   });
   
-  it('should allow, sort by price Ascending', async function() {
+  it('should allow sort by Contact Name Ascending', async function() {
     name.sendKeys('John Doe');
     mobile.sendKeys('9898989898');
     email.sendKeys('admin@xyzcompany.com');
@@ -172,7 +172,7 @@ describe('Flighter app \n', function() {
     );
   });
 
-  it('should allow, sort by price Descending', async function() {
+  it('should allow sort by Contact Name Descending', async function() {
     name.sendKeys('John Doe');
     mobile.sendKeys('9898989898');
     email.sendKeys('admin@xyzcompany.com');
@@ -242,7 +242,7 @@ describe('Flighter app \n', function() {
     );
   });
 
-  it('should have no row if no Mobile numbers gets filtered in search', async function() {
+  it('should have no Results found <div> row if no Mobile numbers gets filtered in search', async function() {
     name.sendKeys('John Doe');
     mobile.sendKeys('9876543210');
     email.sendKeys('admin3@xyzcompany.com');
