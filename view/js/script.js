@@ -130,3 +130,101 @@ PhoneDirectory.prototype.init = function() {
 
 const phoneDirectory = new PhoneDirectory();
 phoneDirectory.init();
+
+// function PhoneDirectory() {
+//   this.directory = [...contactsList];
+//   this.directoryBackup = [...contactsList];
+//   this.nameSort = null;
+// }
+// PhoneDirectory.prototype.submitClick = function(event) {
+//   if (this.name && this.name.value && this.mobile && this.mobile.value && this.email && this.email.value) {
+//       let item = { name: this.name.value, mobile: this.mobile.value, email: this.email.value };
+//       this.directory.push(item);
+//       this.directoryBackup = [...this.directory];
+//       this.updateTable();
+//   } else {
+//       this.error.style.display = 'block';
+//   }
+// }
+// PhoneDirectory.prototype.sortByName = function(event) {
+//   this.nameSort = (!this.nameSort || this.nameSort === -1) ? 1 : -1;
+//   this.directoryBackup = [...this.directory];
+//   this.directory = this.directory.sort(compareValues('name', (this.nameSort === 1) ? 'asc' : 'desc'));
+//   this.updateTable();
+// }
+// function compareValues(key, order = 'asc') {
+//   return function(a, b) {
+//       if (!a.hasOwnProperty(key) ||
+//           !b.hasOwnProperty(key)) {
+//           return 0;
+//       }
+//       const varA = (typeof a[key] === 'string') ?
+//           a[key].toUpperCase() : a[key];
+//       const varB = (typeof b[key] === 'string') ?
+//           b[key].toUpperCase() : b[key];
+//       let comparison = 0;
+//       if (varA > varB) {
+//           comparison = 1;
+//       } else if (varA < varB) {
+//           comparison = -1;
+//       }
+//       return (
+//           (order == 'desc') ?
+//           (comparison * -1) : comparison
+//       );
+//   };
+// }
+// PhoneDirectory.prototype.searchPhone = function(event) {
+//   let key = event.target.value;
+//   if (this.directory.length === 0) {
+//       this.directory = [...this.directoryBackup];
+//   }
+//   let searchItems = this.directory.filter((item) => {
+//       return item.mobile.includes(key);
+//   });
+//   if (searchItems.length > 0) {
+//       this.directory = [...searchItems];
+//       this.noResult.style.display = 'none';
+//   } else {
+//       this.directory = [];
+//       this.noResult.style.display = 'block';
+//   }
+//   this.updateTable();
+// }
+// PhoneDirectory.prototype.updateTable = function() {
+//   let headerRow = this.summaryTable.querySelector('tr:first-child');
+//   this.summaryTable.innerHTML = '';
+//   this.summaryTable.appendChild(headerRow);
+//   this.directory.forEach(item => {
+//       let row = document.createElement('tr'),
+//           name = document.createElement('td'),
+//           email = document.createElement('td'),
+//           mobile = document.createElement('td');
+//       name.innerText = item.name;
+//       email.innerText = item.email;
+//       mobile.innerText = item.mobile;
+//       row.appendChild(name);
+//       row.appendChild(mobile);
+//       row.appendChild(email);
+//       this.summaryTable.appendChild(row);
+//   })
+// }
+// PhoneDirectory.prototype.init = function() {
+//   this.submitBtn = document.querySelector('#submit');
+//   this.name = document.querySelector('#name');
+//   this.mobile = document.querySelector('#mobile');
+//   this.email = document.querySelector('#email');
+//   this.error = document.querySelector('#error');
+//   this.noResult = document.querySelector('#noResult');
+//   this.summaryTable = document.querySelector('#summaryTable');
+//   this.nameColumn = document.querySelector('#nameColumn');
+//   this.search = document.querySelector('#search');
+//   this.submitBtn.addEventListener("click", this.submitClick.bind(this));
+//   this.nameColumn.addEventListener("click", this.sortByName.bind(this));
+//   this.search.addEventListener("keyup", this.searchPhone.bind(this));
+//   this.updateTable();
+// }
+// window.addEventListener('DOMContentLoaded', (event) => {
+//   var phoneDirectory = new PhoneDirectory();
+//   phoneDirectory.init();
+// });

@@ -129,15 +129,15 @@ describe('Phone Directory app \n', function() {
     mobile.sendKeys('9898989898');
     email.sendKeys('admin2@xyzcompany.com');
     await submit.click();
-    name.sendKeys('John ');
+    name.sendKeys('John');
     mobile.sendKeys('8989898989');
     email.sendKeys('admin3@xyzcompany.com');
     await submit.click();
     const tbody = "document.querySelectorAll('#summaryTable tbody')[0]";
-    const hasItemAdded = await driver.executeScript(`return ${tbody}.childElementCount === 4 &&
-      ${tbody}.children[1].children[0].innerText === "Admin" && ${tbody}.children[1].children[1].innerText === "9999999999" && ${tbody}.children[1].children[2].innerText === "admin@xyzcompany.com" &&
-      ${tbody}.children[2].children[0].innerText === "John Doe" && ${tbody}.children[2].children[1].innerText === "9898989898" && ${tbody}.children[2].children[2].innerText === "admin2@xyzcompany.com"
-      ${tbody}.children[3].children[0].innerText === "John " && ${tbody}.children[3].children[1].innerText === "8989898989" && ${tbody}.children[3].children[2].innerText === "admin3@xyzcompany.com"`);
+    const hasItemAdded = await driver.executeScript(`return ${tbody}.childElementCount === 3 &&
+      ${tbody}.children[0].children[0].innerText === "Admin" && ${tbody}.children[0].children[1].innerText === "9999999999" && ${tbody}.children[0].children[2].innerText === "admin@xyzcompany.com" &&
+      ${tbody}.children[1].children[0].innerText === "John Doe" && ${tbody}.children[1].children[1].innerText === "9898989898" && ${tbody}.children[1].children[2].innerText === "admin2@xyzcompany.com" &&
+      ${tbody}.children[2].children[0].innerText === "John" && ${tbody}.children[2].children[1].innerText === "8989898989" && ${tbody}.children[2].children[2].innerText === "admin3@xyzcompany.com"`);
     const noError = await driver.executeScript("return getComputedStyle(document.getElementsByClassName('error')[0]).display === 'none'");
     expect(hasItemAdded).to.be.true;
     expect(noError).to.be.true;
@@ -210,7 +210,12 @@ describe('Phone Directory app \n', function() {
 
     name.sendKeys('Xavier');
     mobile.sendKeys('9898989898');
-    email.sendKeys('admin@xyzcompany.com');
+    email.sendKeys('admin4@xyzcompany.com');
+    await submit.click();
+
+    name.sendKeys('Xavier calvin');
+    mobile.sendKeys('9898984898');
+    email.sendKeys('admin5@xyzcompany.com');
     await submit.click();
     const hasBg = await driver.executeScript("return  getComputedStyle(document.querySelectorAll('#summaryTable tbody')[0].children[1]).background.includes('rgb(242, 242, 242)') && getComputedStyle(document.querySelectorAll('#summaryTable tbody')[0].children[3]).background.includes('rgb(242, 242, 242)')");
     expect(hasBg).to.be.true;
