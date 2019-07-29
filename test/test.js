@@ -217,7 +217,7 @@ describe('Phone Directory app \n', function() {
     mobile.sendKeys('9898984898');
     email.sendKeys('admin5@xyzcompany.com');
     await submit.click();
-    const hasBg = await driver.executeScript("return  getComputedStyle(document.querySelectorAll('#summaryTable tbody')[0].children[1]).background.includes('rgb(242, 242, 242)') && getComputedStyle(document.querySelectorAll('#summaryTable tbody')[0].children[3]).background.includes('rgb(242, 242, 242)')");
+    const hasBg = await driver.executeScript("return  getComputedStyle(document.querySelectorAll('#summaryTable tbody')[0].children[0]).background.includes('rgb(242, 242, 242)') && getComputedStyle(document.querySelectorAll('#summaryTable tbody')[0].children[2]).background.includes('rgb(242, 242, 242)')");
     expect(hasBg).to.be.true;
   });
 
