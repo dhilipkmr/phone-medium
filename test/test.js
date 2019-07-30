@@ -169,9 +169,9 @@ describe('Phone Directory app \n', function() {
 
     // Ascending
     await nameColumn.click();
-    let name1 = "document.querySelectorAll('#summaryTable tbody')[0].children[1].children[0].innerText.toLowerCase()";
-    let name2 = "document.querySelectorAll('#summaryTable tbody')[0].children[2].children[0].innerText.toLowerCase()";
-    let name3 = "document.querySelectorAll('#summaryTable tbody')[0].children[3].children[0].innerText.toLowerCase()";
+    let name1 = "document.querySelectorAll('#summaryTable tbody')[0].children[0].children[0].innerText.toLowerCase()";
+    let name2 = "document.querySelectorAll('#summaryTable tbody')[0].children[1].children[0].innerText.toLowerCase()";
+    let name3 = "document.querySelectorAll('#summaryTable tbody')[0].children[2].children[0].innerText.toLowerCase()";
     let sorted = await driver.executeScript(`return (${name1} < ${name2}) && (${name1} < ${name3}) && (${name2} < ${name3})`);
     expect(sorted).to.be.true;
     driver.takeScreenshot().then(
@@ -239,15 +239,15 @@ describe('Phone Directory app \n', function() {
 
     const tbody = "document.querySelectorAll('#summaryTable tbody')[0]";
     search.sendKeys('987654');
-    let correctRows = await driver.executeScript(`return document.querySelectorAll('#summaryTable tbody')[0].childElementCount === 3 &&
-      ${tbody}.children[1].children[0].innerText === "John Doe" && ${tbody}.children[1].children[1].innerText === "9876543210" && ${tbody}.children[1].children[2].innerText === "admin3@xyzcompany.com"
-      ${tbody}.children[2].children[0].innerText === "Xavier" && ${tbody}.children[2].children[1].innerText === "9876540000" && ${tbody}.children[2].children[2].innerText === "admin4@xyzcompany.com"`);
+    let correctRows = await driver.executeScript(`return document.querySelectorAll('#summaryTable tbody')[0].childElementCount === 2 &&
+      ${tbody}.children[0].children[0].innerText === "John Doe" && ${tbody}.children[0].children[1].innerText === "9876543210" && ${tbody}.children[0].children[2].innerText === "admin3@xyzcompany.com"
+      ${tbody}.children[1].children[0].innerText === "Xavier" && ${tbody}.children[1].children[1].innerText === "9876540000" && ${tbody}.children[1].children[2].innerText === "admin4@xyzcompany.com"`);
 
     expect(correctRows).to.be.true;
     search.clear();
     search.sendKeys('9876543210');
-    correctRows = await driver.executeScript(`return document.querySelectorAll('#summaryTable tbody')[0].childElementCount === 2 && 
-      ${tbody}.children[1].children[0].innerText === "John Doe" && ${tbody}.children[1].children[1].innerText === "9876543210" && ${tbody}.children[1].children[2].innerText === "admin3@xyzcompany.com"`);
+    correctRows = await driver.executeScript(`return document.querySelectorAll('#summaryTable tbody')[0].childElementCount === 1 && 
+      ${tbody}.children[0].children[0].innerText === "John Doe" && ${tbody}.children[0].children[1].innerText === "9876543210" && ${tbody}.children[0].children[2].innerText === "admin3@xyzcompany.com"`);
     expect(correctRows).to.be.true;
     driver.takeScreenshot().then(
       function(image, err) {
@@ -264,7 +264,7 @@ describe('Phone Directory app \n', function() {
 
     const tbody = "document.querySelectorAll('#summaryTable tbody')[0]";
     search.sendKeys('0000000000');
-    let correctRows = await driver.executeScript(`return document.querySelectorAll('#summaryTable tbody')[0].childElementCount === 1 && getComputedStyle(document.getElementById('noResult')).display !== 'none'`);
+    let correctRows = await driver.executeScript(`return document.querySelectorAll('#summaryTable tbody')[0].childElementCount === 0 && getComputedStyle(document.getElementById('noResult')).display !== 'none'`);
     expect(correctRows).to.be.true;
     driver.takeScreenshot().then(
       function(image, err) {
